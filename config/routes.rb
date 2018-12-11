@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
 
+  scope controller: :pages do
+    get '/library' => :library, as: :library
+  end
+
 end

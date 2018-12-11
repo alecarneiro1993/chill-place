@@ -1,1 +1,52 @@
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<div class='container-fluid h-100'>
+  <div id="big-message" class="row justify-content-center d-flex align-items-end pb-4">
+    <div class="col-9 text-center">
+      <h1 class="root-heading">Ready to relax,
+        <span>buddy?</span></h1>
+    </div>
+  </div>
+  <div id="instructions" class="row justify-content-center pt-4">
+    <div class="col-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center mb-4">
+            <i class="far fa-list-alt"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">Browse our store containing hundreds of movies and seasons of your liking</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center mb-4">
+            <i class="far fa-credit-card"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">Pay insignificant prices to have access to the content you liked, without additional fees</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center mb-4">
+            <i class="fas fa-laptop"></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">Your purchases will appear at your library after payment has been approved and will be available for 3 days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="login-message" class="row justify-content-center">
+    <div class="col-9 text-center">
+      <h2 class="root-heading">So, what are you waiting for?
+        <%= link_to 'Log in', new_session_path(:user), class: 'links' %></h2>
+    </div>
+  </div>
+</div>
