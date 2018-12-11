@@ -37,6 +37,7 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'pry'
   #RSpec and dependencies
    gem 'rspec-rails', '~> 3.8'
    gem 'factory_bot_rails'
