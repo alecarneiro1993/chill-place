@@ -1,55 +1,41 @@
-<div class="row h-100 justify-content-center">
-  <div class="col-6 align-self-center">
-    <div class="card p-3 card-box-shadow">
-      <%= image_tag 'chill-place', class: 'card-img-top w-50 h-50 align-self-center' %>
-      <h4 class="pt-3 pb-3 align-self-center m-0">
-        <em>Your place to cool
-          <i class="fas fa-arrow-down"></i>
-        </em>
-      </h4>
-      <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="container-fluid">
-          <%= render 'devise/shared/error_messages' if flash[:alert] %>
-          <div class="row pb-2">
-            <div class="col-12">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">
-                    <i class="far fa-envelope"></i>
-                  </span>
-                </div>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-          <div class="row pt-2 pb-2">
-            <div class="col-12">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">
-                    <i class="fas fa-key"></i>
-                  </span>
-                </div>
-                <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-          <div class="row pt-2">
-            <div class="col-12">
-              <div class="actions">
-                <%= f.submit "Log in", class: 'btn btn-primary' %>
-              </div>
-            </div>
-          </div>
-          <div class="row pt-2">
-            <div class="col-12">
-              <%= render "devise/shared/links" %>
-            </div>
-          </div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="container-fluid">
+  <%= render 'devise/shared/error_messages' if flash[:alert] %>
+  <div class="row pb-2">
+    <div class="col-12">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <i class="far fa-envelope"></i>
+          </span>
         </div>
-      <% end %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-2 pb-2">
+    <div class="col-12">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-2">
+    <div class="col-12">
+      <div class="actions">
+        <%= f.submit "Log in", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-2">
+    <div class="col-12">
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
-</div>
+<% end %>
