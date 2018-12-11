@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Authentication
 gem 'devise'
 
+# Fake data
+gem 'faker'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
