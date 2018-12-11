@@ -1,3 +1,5 @@
+@import 'partials/*'
+
 *
   font-size: 1.1rem
   font-family: 'Raleway', sans-serif
@@ -39,3 +41,17 @@ main
     font-size: 8vh
   h2.root-heading
     font-size: 1.7rem
+
+  #v-navigation
+    background: $v-nav-color
+    border-right: 2px solid $v-nav-border-color
+    color: white
+    a
+      color: $v-nav-link-color
+      &.active
+        color: white
+      &:hover
+        background: $v-nav-link-color
+        color: white
+  #content
+    background: $content-color
