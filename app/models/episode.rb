@@ -1,3 +1,4 @@
-class Episode < Item
-  belongs_to :season, foreign_key: :item_id
+class Episode < ApplicationRecord
+  belongs_to :season
+  validates_presence_of [:title, :plot, :episode_number]
 end

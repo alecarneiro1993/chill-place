@@ -1,3 +1,4 @@
-class Season < Item
- has_many :episodes, foreign_key: :item_id
+class Season < ApplicationRecord
+ has_many :episodes
+ validates_presence_of [:title, :plot]
 end

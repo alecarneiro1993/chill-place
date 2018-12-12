@@ -15,14 +15,28 @@ ActiveRecord::Schema.define(version: 20181210224119) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "items", force: :cascade do |t|
+  create_table "episodes", force: :cascade do |t|
     t.string "title"
     t.text "plot"
-    t.bigint "item_id"
-    t.string "type"
+    t.integer "episode_number"
+    t.bigint "season_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_items_on_item_id"
+    t.index ["season_id"], name: "index_episodes_on_season_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.text "plot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string "title"
+    t.text "plot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,5 +47,5 @@ ActiveRecord::Schema.define(version: 20181210224119) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "items", "items"
+  add_foreign_key "episodes", "seasons"
 end
