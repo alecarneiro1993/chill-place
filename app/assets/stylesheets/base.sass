@@ -7,7 +7,7 @@
 
 html, body
   width: 100%
-  height: 100%
+  min-height: 100vh
 
 main
   &.full-background
@@ -59,7 +59,6 @@ main
     background: $content-color
 
   #store-tabs
-    height: 10%
     .nav-link
       margin: 0 1rem
       &.active
@@ -67,7 +66,3 @@ main
       &:hover
         background: $pill-link-color
         color: white
-
-#custom-pagination
-  background: white
-  color: black
