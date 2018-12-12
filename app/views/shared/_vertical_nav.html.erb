@@ -4,6 +4,6 @@
     <%= link_to 'Library', library_path, class: active?('library') %>
   </li>
   <li class="nav-item">
-    <%= link_to 'Store', store_path, class: active?('store')%>
+    <%= link_to 'Store', store_path(type: :movies), class: active?('store')%>
   </li>
 </ul>
