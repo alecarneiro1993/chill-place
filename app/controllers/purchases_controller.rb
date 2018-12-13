@@ -27,6 +27,7 @@ class PurchasesController < ApplicationController
   def has_been_bought?
     Purchase.where(
       purchasable_id: @purchase.purchasable_id,
+      purchasable_type: @purchase.purchasable_type,
       user: current_user,
       quality: @purchase.quality,
       created_at: 3.days.ago..DateTime.now).any?
