@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181210224119) do
+ActiveRecord::Schema.define(version: 20181213001607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20181210224119) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.string "quality"
+    t.integer "purchasable_id"
+    t.string "purchasable_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "seasons", force: :cascade do |t|
     t.string "title"
     t.text "plot"
@@ -48,4 +58,5 @@ ActiveRecord::Schema.define(version: 20181210224119) do
   end
 
   add_foreign_key "episodes", "seasons"
+  add_foreign_key "purchases", "users"
 end

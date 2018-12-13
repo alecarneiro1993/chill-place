@@ -18,3 +18,6 @@ tv_shows.each { |tv_show|
     )
   }
 }
+
+#user
+User.create(email: 'test@test.com', password: 'test123')
