@@ -15,4 +15,17 @@ Rails.application.routes.draw do
     post '/purchases' => :create, as: :purchases
   end
 
+  namespace :api do
+    scope controller: :fetch do
+      get '/all' => :index
+      get '/movies' => :movies
+      get '/seasons' => :seasons
+    end
+    scope controller: :purchases do
+      get '/purchases' => :index
+      post '/purchases' => :create
+    end
+
+  end
+
 end
