@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   layout 'splash', only: [:index]
 
   before_action :signed_in?, only: [:index]
-  before_action :set_type, only: [:store]
+  before_action :set_type, only: [:store, :checkout]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -13,7 +13,11 @@ class PagesController < ApplicationController
   end
 
   def store
-    @items = @resource.order(:created_at).page(params[:page]).per(6)
+    @items = @resource.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
+  def checkout
+    @item = @resource.find(params[:id])
   end
 
   private

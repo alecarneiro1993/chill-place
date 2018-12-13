@@ -18,8 +18,18 @@
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title"><%= item.title %></h5>
-              <p class="card-text"><%= item.plot.truncate(150) %></p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <p class="card-text"><%= item.plot.truncate(100) %></p>
+              <p>Price:
+                <b>$2.99</b>
+              </p>
+              <% if @type == 'seasons' %>
+                <p>
+                  # of episodes:
+                  <b><%= item.episodes.count %></b>
+                </p>
+              <% end %>
+              <%= link_to 'Buy', checkout_path(id: item.id, type: @type), class: 'btn btn-primary btn-links' %>
+
             </div>
           </div>
         </div>
@@ -28,8 +38,18 @@
             <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title"><%= @items[index + 1].title %></h5>
-                <p class="card-text"><%= @items[index + 1].plot.truncate(150) %></p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text"><%= @items[index + 1].plot.truncate(100) %></p>
+                <p>Price:
+                  <b>$2.99</b>
+                </p>
+                <% if @type == 'seasons' %>
+                  <p>
+                    # of episodes:
+                    <b><%= @items[index+1].episodes.count %></b>
+                  </p>
+                <% end %>
+                <%= link_to 'Buy', checkout_path(id: @items[index+1].id, type: @type), class: 'btn btn-primary btn-links' %>
+
               </div>
             </div>
           </div>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope controller: :pages do
     get '/library' => :library, as: :library
     get '/store' => :store, as: :store
+    get '/checkout/:id' => :checkout, as: :checkout
   end
 
 end
