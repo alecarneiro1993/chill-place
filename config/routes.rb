@@ -10,4 +10,8 @@ Rails.application.routes.draw do
     get '/checkout/:id' => :checkout, as: :checkout
   end
 
+  scope controller: :purchases do
+    post '/purchases' => :create, as: :purchases
+  end
+
 end

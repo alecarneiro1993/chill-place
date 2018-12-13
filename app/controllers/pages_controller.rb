@@ -18,6 +18,7 @@ class PagesController < ApplicationController
 
   def checkout
     @item = @resource.find(params[:id])
+    @purchase = Purchase.new
   end
 
   private

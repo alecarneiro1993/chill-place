@@ -28,8 +28,7 @@
                   <b><%= item.episodes.count %></b>
                 </p>
               <% end %>
-              <%= link_to 'Buy', checkout_path(id: item.id, type: @type), class: 'btn btn-primary btn-links' %>
-
+              <%= link_to "Buy this #{item_type}", checkout_path(id: item.id, type: @type), class: 'btn btn-primary btn-links' %>
             </div>
           </div>
         </div>
@@ -48,7 +47,7 @@
                     <b><%= @items[index+1].episodes.count %></b>
                   </p>
                 <% end %>
-                <%= link_to 'Buy', checkout_path(id: @items[index+1].id, type: @type), class: 'btn btn-primary btn-links' %>
+                <%= link_to "Buy this #{item_type}", checkout_path(id: @items[index+1].id, type: @type), class: 'btn btn-primary btn-links' %>
 
               </div>
             </div>
