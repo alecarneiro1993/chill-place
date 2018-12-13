@@ -22,14 +22,7 @@ class PagesController < ApplicationController
       format.json {
         render json: {
           movies: Movie.all.order(id: :asc, created_at: :desc),
-          seasons:
-            Season.all.order(id: :asc, created_at: :desc).each { |season|
-             {
-               season: season,
-               episodes: season.episodes.order(episode_number: :desc)
-             }
-            }
-
+          seasons: format_seasons_json
         }
       }
     end
@@ -61,5 +54,13 @@ class PagesController < ApplicationController
   def time_left(item)
     time = ((item.created_at + 3.days - Time.now)/3600).round(2).to_s.split('.')
     "#{time[0]} hours e #{time[1]} minutes"
+  end
+
+  def format_seasons_json
+    Season.all.order(id: :asc, created_at: :desc).map { |season|
+     s = season.attributes
+     s[:episodes] = season.episodes.order(id: :asc)
+     s
+    }
   end
 end
