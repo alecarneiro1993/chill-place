@@ -1,1 +1,54 @@
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+<div class="container-fluid h-100">
+  <div class="row justify-content-center d-flex align-items-center type-tabs">
+    <div class="col-4 mt-2">
+      <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+          <%= link_to 'Movies', library_path(type: :movies), class: active_type?('movies') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Seasons', library_path(type: :seasons), class: active_type?('seasons') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <% @items.each_with_index do |item, index| %>
+    <% if index % 2 == 0 %>
+      <div class="row pb-2 pt-2">
+        <div class="col-6 align-self-start h-100">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <p class="card-text"><%= item.plot.truncate(100) %></p>
+              <% if @type == 'seasons' %>
+                <p>
+                  # of episodes:
+                  <b><%= item.episodes.count %></b>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% if !@items[index + 1].nil?%>
+          <div class="col-6 align-self-end h-100">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><%= @items[index + 1].title %></h5>
+                <p class="card-text"><%= @items[index + 1].plot.truncate(100) %></p>
+                <% if @type == 'seasons' %>
+                  <p>
+                    # of episodes:
+                    <b><%= @items[index+1].episodes.count %></b>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="row justify-content-center pt-2">
+    <div class="col-6">
+      <%= paginate @items %>
+    </div>
+  </div>
