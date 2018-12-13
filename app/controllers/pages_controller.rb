@@ -3,17 +3,36 @@ class PagesController < ApplicationController
   layout 'splash', only: [:index]
 
   before_action :signed_in?, only: [:index]
-  before_action :set_type, only: [:store, :checkout]
-  skip_before_action :authenticate_user!, only: [:index]
+  before_action :set_type, only: [:library, :store, :store_json, :checkout]
+  skip_before_action :authenticate_user!, only: [:index, :store_json]
 
   def index
   end
 
   def library
+    @items = get_purchased_items.order(created_at: :asc).page(params[:page]).per(6)
   end
 
   def store
     @items = @resource.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
+  def store_json
+    respond_to do |format|
+      format.json {
+        render json: {
+          movies: Movie.all.order(id: :asc, created_at: :desc),
+          seasons:
+            Season.all.order(id: :asc, created_at: :desc).each { |season|
+             {
+               season: season,
+               episodes: season.episodes.order(episode_number: :desc)
+             }
+            }
+
+        }
+      }
+    end
   end
 
   def checkout
@@ -31,4 +50,16 @@ class PagesController < ApplicationController
     @resource = @type == 'movies' ? Movie : Season
   end
 
+  def get_purchased_items
+    Purchase.where(
+      user: current_user,
+      purchasable_type: @resource.to_s,
+      created_at: 3.days.ago..DateTime.now
+    )
+  end
+
+  def time_left(item)
+    time = ((item.created_at + 3.days - Time.now)/3600).round(2).to_s.split('.')
+    "#{time[0]} hours e #{time[1]} minutes"
+  end
 end

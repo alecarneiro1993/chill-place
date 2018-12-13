@@ -7,6 +7,6 @@
     <%= link_to 'Store', store_path(type: :movies), class: active?('store')%>
   </li>
   <li class="nav-item">
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    <%= link_to('Logout', destroy_user_session_path, class: 'nav-link', method: :delete) %>
   </li>
 </ul>

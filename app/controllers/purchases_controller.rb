@@ -5,7 +5,9 @@ class PurchasesController < ApplicationController
     if !has_been_bought?
       if @purchase.save
         flash[:success] = 'Item purchased'
-        redirect_to :library
+        redirect_to controller: :pages,
+        action: :library,
+        type: @purchase.purchasable_type == 'Movie' ? :movies : :seasons
       else
         flash[:alert] = 'Something went wrong with this purchase'
         redirect_back(fallback_location: root_path)
@@ -27,7 +29,7 @@ class PurchasesController < ApplicationController
       purchasable_id: @purchase.purchasable_id,
       user: current_user,
       quality: @purchase.quality,
-      created_at: 3.days.ago..DateTime::Infinity.new).any?
+      created_at: 3.days.ago..DateTime.now).any?
   end
 
 end
