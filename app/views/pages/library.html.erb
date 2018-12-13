@@ -1,0 +1,57 @@
+<div class="container-fluid h-100">
+  <%= render 'pages/shared/type_tabs' %>
+  <% @items.each_with_index do |item, index| %>
+    <% if index % 2 == 0 %>
+      <div class="row pb-2 pt-2">
+        <div class="col-6 align-self-start h-100">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.purchasable.title %></h5>
+              <p class="card-text"><%= item.purchasable.plot.truncate(100) %></p>
+              <% if @type == 'seasons' %>
+                <p>
+                  # of episodes:
+                  <b><%= item.purchasable.episodes.count %></b>
+                </p>
+              <% end %>
+              <p>
+                Quality:
+                <b><%= item.quality.capitalize %></b>
+              </p>
+              <p>Time left:
+                <%= "approximately #{time_left(item)}" %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% if !@items[index + 1].nil?%>
+          <div class="col-6 align-self-end h-100">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><%= @items[index + 1].purchasable.title %></h5>
+                <p class="card-text"><%= @items[index + 1].purchasable.plot.truncate(100) %></p>
+                <% if @type == 'seasons' %>
+                  <p>
+                    # of episodes:
+                    <b><%= @items[index+1].purchasable.episodes.count %></b>
+                  </p>
+                <% end %>
+                <p>
+                  Quality:
+                  <b><%= @items[index+1].quality.capitalize %></b>
+                </p>
+                <p>Time left:
+                  <%= "approximately #{time_left(item)}" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="row justify-content-center pt-2">
+    <div class="col-6">
+      <%= paginate @items %>
+    </div>
+  </div>

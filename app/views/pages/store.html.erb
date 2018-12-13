@@ -1,0 +1,52 @@
+<div class="container-fluid h-100">
+  <%= render 'pages/shared/type_tabs' %>
+  <% @items.each_with_index do |item, index| %>
+    <% if index % 2 == 0 %>
+      <div class="row pb-2 pt-2">
+        <div class="col-6 align-self-start h-100">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <p class="card-text"><%= item.plot.truncate(100) %></p>
+              <p>Price:
+                <b>$2.99</b>
+              </p>
+              <% if @type == 'seasons' %>
+                <p>
+                  # of episodes:
+                  <b><%= item.episodes.count %></b>
+                </p>
+              <% end %>
+              <%= link_to "Buy this #{item_type}", checkout_path(id: item.id, type: @type), class: 'btn btn-primary btn-links' %>
+            </div>
+          </div>
+        </div>
+        <% if !@items[index + 1].nil?%>
+          <div class="col-6 align-self-end h-100">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><%= @items[index + 1].title %></h5>
+                <p class="card-text"><%= @items[index + 1].plot.truncate(100) %></p>
+                <p>Price:
+                  <b>$2.99</b>
+                </p>
+                <% if @type == 'seasons' %>
+                  <p>
+                    # of episodes:
+                    <b><%= @items[index+1].episodes.count %></b>
+                  </p>
+                <% end %>
+                <%= link_to "Buy this #{item_type}", checkout_path(id: @items[index+1].id, type: @type), class: 'btn btn-primary btn-links' %>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="row justify-content-center pt-2">
+    <div class="col-6">
+      <%= paginate @items %>
+    </div>
+  </div>

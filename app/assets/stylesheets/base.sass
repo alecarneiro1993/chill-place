@@ -1,0 +1,68 @@
+@import 'partials/*'
+
+*
+  font-size: 1.1rem
+  font-family: 'Raleway', sans-serif
+  font-weight: 400
+
+html, body
+  width: 100%
+  min-height: 100vh
+
+main
+  &.full-background
+    background: linear-gradient(rgba(black, 0.6), rgba(black, 0.6)), url('full-background.jpg')
+    background-size: cover
+  div#logo
+    height: 20%
+  div#big-message
+    height: 20%
+  div#instructions
+    height: 30%
+    color: white
+    i
+      font-size: 8vh
+    .instructions-msg
+      font-size: 2.5vh
+  div#login-message
+    height: 30%
+
+  .root-heading
+    color: white
+    font-weight: 300
+    span, a
+      font-size: inherit
+      font-weight: 600
+    a
+      color: white
+      &:hover
+        color: white
+      &:visited
+        color: white
+  h1.root-heading
+    font-size: 8vh
+  h2.root-heading
+    font-size: 1.7rem
+
+  #v-navigation
+    background: $v-nav-color
+    border-right: 2px solid $v-nav-border-color
+    color: white
+    a
+      color: $v-nav-link-color
+      &.active
+        color: white
+      &:hover
+        background: $v-nav-link-color
+        color: white
+  #content
+    background: $content-color
+
+  .type-tabs
+    .nav-link
+      margin: 0 1rem
+      &.active
+        background: $pill-link-color
+      &:hover
+        background: $pill-link-color
+        color: white

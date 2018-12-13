@@ -1,0 +1,12 @@
+<h5 class="mt-2">Welcome!</h5>
+<ul class="nav flex-column mt-4">
+  <li class="nav-item">
+    <%= link_to 'Library', library_path, class: active?('library') %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Store', store_path(type: :movies), class: active?('store')%>
+  </li>
+  <li class="nav-item">
+    <%= link_to('Logout', destroy_user_session_path, class: 'nav-link', method: :delete) %>
+  </li>
+</ul>

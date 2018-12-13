@@ -1,0 +1,12 @@
+<div class="row justify-content-center d-flex align-items-center type-tabs">
+  <div class="col-12 mt-2">
+    <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item">
+        <%= link_to 'Movies', page_path(:movies), class: active_type?('movies') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Seasons', page_path(:seasons), class: active_type?('seasons') %>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-12 d-flex align-items-center">
+      <div class="card card-body h-50">
+        <div class="container-fluid h-100">
+          <%= form_for @purchase do |f| %>
+          <%= f.hidden_field :purchasable_id, value: @item.id %>
+          <%= f.hidden_field :purchasable_type, value: item_type %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <div class="row">
+            <div class="col-10">
+              <h1>Checkout</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-10">
+              <span>
+                <b>Product type:</b>&nbsp;<%= item_type %></span>
+              <span><br/>
+                <b>Title:</b>&nbsp;<%= @item.title %></span>
+              <span><br/>
+                <b>Price:</b>&nbsp;$2.99</span><br/>
+              <% if @type == 'seasons' %>
+                <span>
+                  <b>Episodes</b>:
+                  <%= @item.episodes.count %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-10">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Quality</label>
+                </div>
+                <%= f.select :quality, [['Standard', :standard], ['High', :high]], {}, {class: 'custom-select', id: 'inputGroupSelect01' } %>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-4">
+              <%= f.submit 'Buy', class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

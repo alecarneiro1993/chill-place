@@ -9,13 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
   </head>
   <body>
-    <main id="main-container" class='container-fluid min-h-inherit'>
-      <div class="row min-h-inherit">
-        <div id="v-navigation" class="col-2 p-0 text-center min-h-inherit">
-          <%= render 'shared/vertical_nav' %>
-        </div>
-        <div id="content" class='col-10 min-h-inherit'>
-          <%= render 'shared/flash_messages' if flash[:success] || flash[:alert] %>
+    <main class='container-fluid min-h-inherit full-background'>
+      <div class="row h-100 min-h-inherit">
+        <div class="col-12">
           <%= yield %>
         </div>
       </div>
