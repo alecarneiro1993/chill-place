@@ -17,7 +17,7 @@ module PagesHelper
   end
 
   def time_left(item)
-    time = ((item.created_at + 3.days - Time.now)/3600).round(2).to_s.split('.')
-    "#{time[0]} hours e #{time[1]} minutes"
+    time = ((item.created_at + 3.days - Time.now)/3600).round.to_s
+    "#{time} hours"
   end
 end
